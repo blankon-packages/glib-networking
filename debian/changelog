@@ -1,8 +1,127 @@
-glib-networking (2.40.0-1blankon1) tambora; urgency=medium
+glib-networking (2.44.0-1blankon1) tambora; urgency=medium
 
-  * Upload to tambora 
+  * New upstream release
+  * Merge with Debian Experimental
 
- -- Darian Rizaludin <driantrainman@gmail.com>  Wed, 26 Mar 2014 17:32:48 +0700
+ -- Mahyuddin <yudi.al@gmail.com>  Fri, 10 Apr 2015 20:08:18 +0700
+
+glib-networking (2.44.0-1) experimental; urgency=medium
+
+  * New upstream release 2.44.0
+
+ -- Iain Lane <laney@debian.org>  Mon, 30 Mar 2015 16:50:37 +0100
+
+glib-networking (2.43.92-1) experimental; urgency=medium
+
+  * New upstream release 2.43.92
+    + Fix TLS session caching when using session tickets
+
+ -- Iain Lane <laney@debian.org>  Thu, 19 Mar 2015 17:20:45 +0000
+
+glib-networking (2.43.91-1) experimental; urgency=medium
+
+  * New upstream release 2.43.91
+    - tls/gnutls: Removed a workaround for connecting to servers with weak DH
+      parameters, which was apparently only needed because gnutls was
+      prioritizing DHE over RSA.
+    - tls/gnutls: We now require gnutls 3.x again. (In fact, 2.42.1 and 2.43.1
+      accidentally used a 3.x-only function, so we already required it, we
+      were just failing to declare that fact.)
+    - tls/tests: Skip certain tests when running against old gnutls or GLib
+      releases. (glib-networking 2.43.91 itself does not require GLib 2.43,
+      but one of the test cases does.)
+  * Drop glib BD back to 2.42 as per configure.ac; the problematic test is
+    automatically skipped upstream if necessary now.
+  * Increase libgnutls28-dev BD to 3.0, as per configure.ac
+
+ -- Iain Lane <laney@debian.org>  Wed, 04 Mar 2015 12:54:23 +0000
+
+glib-networking (2.43.1-1) experimental; urgency=medium
+
+  * debian/watch: Watch unstable version too, for experimental.
+  * New upstream release 2.43.1, including changes:
+    + The GTlsClientConnection "use-ssl3" property now falls back to TLS 1.0
+      if SSL 3.0 has been disabled, rather than just failing. Also, we now use
+      the gnutls %LATEST_RECORD_VERSION option by default (to allow connecting
+      to certain servers that were incorrectly patched for the POODLE attack),
+      but also make sure to remove that option in the fallback ("use-ssl3")
+      mode (to allow connecting to other servers that are differently broken).
+    + tls/gnutls: Miscellaneous warning, debugging, and leak fixes.
+  * Bump glib BD to 2.43 (greater than configure.ac; one test requires this
+    version).
+  * Standards-Version → 3.9.6, no changes required.
+
+ -- Iain Lane <laney@debian.org>  Tue, 25 Nov 2014 18:27:15 +0000
+
+glib-networking (2.42.0-2) unstable; urgency=medium
+
+  * debian/patches/01_connection_test.patch:
+    + Disable tls/connection tests. They are racy and so unreliable.
+      Closes: #762588.
+  * debian/rules:
+    + Set VERBOSE so we get more information when a test fails.
+
+ -- Emilio Pozuelo Monfort <pochu@debian.org>  Wed, 22 Oct 2014 23:41:04 +0200
+
+glib-networking (2.42.0-1) unstable; urgency=medium
+
+  * New upstream release.
+
+ -- Andreas Henriksson <andreas@fatal.se>  Tue, 23 Sep 2014 20:36:57 +0200
+
+glib-networking (2.41.92-2) unstable; urgency=medium
+
+  * Target unstable
+
+ -- Sjoerd Simons <sjoerd@debian.org>  Sat, 20 Sep 2014 10:18:53 +0200
+
+glib-networking (2.41.92-1) experimental; urgency=medium
+
+  * debian/tests/installed-tests: Use dbus-run-session instead of dbus-launch.
+  * New upstream release 2.41.92
+    - tls/gnutls: Incorrectly-ordered certificate chains are now accepted
+    - tls/gnutls: Closing an already-closed GTlsConnection now correctly
+      returns TRUE rather than G_IO_ERROR_CLOSED
+
+ -- Iain Lane <laney@debian.org>  Fri, 19 Sep 2014 15:36:11 +0100
+
+glib-networking (2.41.4-1) experimental; urgency=medium
+
+  [ Martin Pitt ]
+  * Unset $http_proxy during autopkgtest; the test suite doesn't get along
+    with it, and doesn't need internet access.
+
+  [ Andreas Henriksson ]
+  * New upstream development release.
+  * Bump glib build-dependency to >= 2.41.3 (current experimental version)
+    since testsuite fails if we use 2.40.0 (current testing/unstable version).
+
+ -- Andreas Henriksson <andreas@fatal.se>  Sat, 06 Sep 2014 14:10:53 -0700
+
+glib-networking (2.40.1-2) unstable; urgency=medium
+
+  * Team upload.
+
+  [ Dimitri John Ledkov ]
+  * Switch to gnutls28. (Closes: #747451)
+
+ -- Andreas Henriksson <andreas@fatal.se>  Sat, 05 Jul 2014 13:30:46 +0200
+
+glib-networking (2.40.1-1) unstable; urgency=medium
+
+  [ Iain Lane ]
+  * Fix Vcs-Browser URL
+
+  [ Emilio Pozuelo Monfort ]
+  * New upstream bugfix release.
+
+ -- Emilio Pozuelo Monfort <pochu@debian.org>  Sat, 26 Apr 2014 20:46:19 +0200
+
+glib-networking (2.40.0-2) unstable; urgency=medium
+
+  * Upload to unstable.
+
+ -- Emilio Pozuelo Monfort <pochu@debian.org>  Wed, 02 Apr 2014 15:59:58 +0200
 
 glib-networking (2.40.0-1) experimental; urgency=medium
 
