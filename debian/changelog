@@ -1,3 +1,9 @@
+glib-networking (2.44.0-1blankon2) tambora; urgency=medium
+
+  * Rebuild
+
+ -- Mijortsa <azis.astrojim@surabaya.di.blankon.in>  Tue, 14 Apr 2015 17:43:50 +0700
+
 glib-networking (2.44.0-1blankon1) tambora; urgency=medium
 
   * New upstream release
