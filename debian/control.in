@@ -1,0 +1,67 @@
+Source: glib-networking
+Section: libs
+Priority: optional
+Maintainer: BlankOn Developers <blankon-dev@googlegroups.com>
+XSBC-Original-Maintainer: Debian GNOME Maintainers <pkg-gnome-maintainers@lists.alioth.debian.org>
+Uploaders: @GNOME_TEAM@
+Build-Depends: debhelper (>= 10),
+               gnome-pkg-tools,
+               libglib2.0-dev (>= 2.46.0),
+               libgnutls28-dev (>= 3.0),
+               libp11-kit-dev (>= 0.8),
+               libproxy-dev (>= 0.4),
+               gsettings-desktop-schemas-dev,
+               ca-certificates
+Vcs-Svn: svn://anonscm.debian.org/pkg-gnome/desktop/unstable/glib-networking
+Vcs-Browser: https://anonscm.debian.org/viewvc/pkg-gnome/desktop/unstable/glib-networking/
+Standards-Version: 4.1.0
+
+Package: glib-networking
+Architecture: any
+Multi-Arch: same
+Depends: ${misc:Depends},
+         ${shlibs:Depends},
+         glib-networking-services (>= ${source:Version}),
+         glib-networking-services (<< ${source:Version}.1~),
+         glib-networking-common (= ${source:Version}),
+         gsettings-desktop-schemas
+Breaks: libglib2.0-0 (<< 2.30.1-2)
+Description: network-related giomodules for GLib
+ This package contains various network related extensions for the GIO 
+ library.
+
+Package: glib-networking-services
+Architecture: any
+Multi-Arch: foreign
+Depends: ${misc:Depends},
+         ${shlibs:Depends},
+         glib-networking-common (= ${source:Version})
+Recommends: glib-networking
+Breaks: glib-networking (<< 2.30.1-2)
+Replaces: glib-networking (<< 2.30.1-2)
+Description: network-related giomodules for GLib - D-Bus services
+ This package contains D-Bus services that are used by the GIO network
+ extensions in glib-networking, for actions that need to be done in a 
+ separate process.
+
+Package: glib-networking-common
+Architecture: all
+Multi-Arch: foreign
+Depends: ${misc:Depends}
+Recommends: glib-networking
+Breaks: glib-networking (<< 2.30.1-2)
+Replaces: glib-networking (<< 2.30.1-2)
+Description: network-related giomodules for GLib - data files
+ This package contains data files and translations for the GIO network
+ extensions in glib-networking.
+
+Package: glib-networking-tests
+Section: misc
+Architecture: any
+Depends: ${misc:Depends},
+         ${shlibs:Depends},
+         glib-networking (= ${binary:Version}),
+         ca-certificates
+Description: network-related giomodules for GLib - installed tests
+ This package contains test programs, designed to be run as part of a
+ regression testsuite.
