@@ -4,7 +4,7 @@ Priority: optional
 Maintainer: BlankOn Developers <blankon-dev@googlegroups.com>
 XSBC-Original-Maintainer: Debian GNOME Maintainers <pkg-gnome-maintainers@lists.alioth.debian.org>
 Uploaders: @GNOME_TEAM@
-Build-Depends: debhelper (>= 10),
+Build-Depends: debhelper (>= 10.3),
                gnome-pkg-tools,
                libglib2.0-dev (>= 2.46.0),
                libgnutls28-dev (>= 3.0),
@@ -14,7 +14,7 @@ Build-Depends: debhelper (>= 10),
                ca-certificates
 Vcs-Svn: svn://anonscm.debian.org/pkg-gnome/desktop/unstable/glib-networking
 Vcs-Browser: https://anonscm.debian.org/viewvc/pkg-gnome/desktop/unstable/glib-networking/
-Standards-Version: 4.1.0
+Standards-Version: 4.1.1
 
 Package: glib-networking
 Architecture: any
@@ -25,7 +25,6 @@ Depends: ${misc:Depends},
          glib-networking-services (<< ${source:Version}.1~),
          glib-networking-common (= ${source:Version}),
          gsettings-desktop-schemas
-Breaks: libglib2.0-0 (<< 2.30.1-2)
 Description: network-related giomodules for GLib
  This package contains various network related extensions for the GIO 
  library.
@@ -37,8 +36,6 @@ Depends: ${misc:Depends},
          ${shlibs:Depends},
          glib-networking-common (= ${source:Version})
 Recommends: glib-networking
-Breaks: glib-networking (<< 2.30.1-2)
-Replaces: glib-networking (<< 2.30.1-2)
 Description: network-related giomodules for GLib - D-Bus services
  This package contains D-Bus services that are used by the GIO network
  extensions in glib-networking, for actions that need to be done in a 
@@ -49,8 +46,6 @@ Architecture: all
 Multi-Arch: foreign
 Depends: ${misc:Depends}
 Recommends: glib-networking
-Breaks: glib-networking (<< 2.30.1-2)
-Replaces: glib-networking (<< 2.30.1-2)
 Description: network-related giomodules for GLib - data files
  This package contains data files and translations for the GIO network
  extensions in glib-networking.

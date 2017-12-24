@@ -2,10 +2,6 @@
 
 -include /usr/share/gnome-pkg-tools/1/rules/gnome-get-source.mk
 
-# Let's get failing tests' stdout and stderr so we have some information when
-# a build fails
-export VERBOSE=1
-
 # Don't strip translations from the installed tests; makes them environment dependent.
 DEB_DH_TRANSLATIONS_ARGS = -Xinstalled-tests
 
@@ -26,5 +22,8 @@ override_dh_strip:
 	dh_strip --dbgsym-migration='glib-networking-dbg (<< 2.48.1-1~)'
 
 override_dh_install:
-	find debian -name '*.la' -delete
-	dh_install --fail-missing
+	find debian -name '*.la' -print -delete
+	dh_install
+
+override_dh_missing:
+	dh_missing --fail-missing
